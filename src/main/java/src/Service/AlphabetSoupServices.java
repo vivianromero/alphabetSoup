@@ -336,29 +336,29 @@ public class AlphabetSoupServices {
 
         if (diffRow == 0) { //Horizontal
             if (diffCol > 0)
-                return 0;
-            return 4;
+                return HORIZ_LEFT_RIGHT;
+            return HORIZ_RIGHT_LEFT;
         }
         if (diffCol == 0) { //Horizontal
             if (diffRow < 0)
-                return 5;
-            return 1;
+                return VERTI_BOTTOM_TOP;
+            return VERTI_TOP_BOTTOM;
         }
 
         if (diffCol > 0 && diffRow > 0) {
-            return 2;
+            return DIAGO_BOTTOM_LEFT_RIGHT;
         }
 
         if (diffCol < 0 && diffRow < 0) {
-            return 7;
+            return DIAG_TOP_RIGHT_LEFT;
         }
 
         if (diffCol > 0 && diffRow < 0) {
-            return 3;
+            return DIAGO_TOP_LEFT_RIGHT;
         }
 
         if (diffCol < 0 && diffRow > 0) {
-            return 6;
+            return DIAG_BOTTOM_RIGHT_LEFT;
         }
         return -1;
     }
@@ -387,7 +387,6 @@ public class AlphabetSoupServices {
         String word = "";
         AlphabetSoupGrid grid = soup.getAlphabetSoupGrid();
         int key = 0;
-
         switch (orientation) {
             case HORIZ_LEFT_RIGHT: {
                 while (iniCol <= fnCol) {
